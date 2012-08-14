@@ -5,3 +5,5 @@
 /robots.txt RobotsR GET
 
 / HomeR GET POST
+/post/#PostId PostR GET
+/new NewR GET POST

@@ -1,4 +1,4 @@
-{-# LANGUAGE TupleSections, OverloadedStrings #-}
+{-# LANGUAGE TupleSections, OverloadedStrings, TemplateHaskell, QuasiQuotes #-}
 module Handler.Home where
 
 import Import
@@ -37,3 +37,22 @@ sampleForm :: Form (FileInfo, Text)
 sampleForm = renderDivs $ (,)
     <$> fileAFormReq "Choose a file"
     <*> areq textField "What's on the file?" Nothing
+
+getPostR :: PostId -> Handler RepHtml
+getPostR pid = do
+  mp <- runDB $ get pid
+  defaultLayout $ do
+    setTitle "display post"
+    $(widgetFile "post")
+
+getNewR :: Handler RepHtml
+getNewR = do
+  defaultLayout $ do
+    setTitle "new post"
+    $(widgetFile "new")
+
+postNewR :: Handler RepHtml
+postNewR = do
+  c <- runInputPost $ ireq textField "c"
+  pid <- runDB $ insert Post { postContent=c }
+  redirect $ PostR pid

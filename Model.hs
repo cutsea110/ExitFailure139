@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell, QuasiQuotes, KindSignatures, TypeFamilies, FlexibleContexts, GADTs #-}
 module Model where
 
 import Prelude

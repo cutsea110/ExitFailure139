@@ -1,0 +1,4 @@
+<h1>submit comment
+<form method=post action=@{NewR}>
+    <textarea name=c>
+  <input type=submit>

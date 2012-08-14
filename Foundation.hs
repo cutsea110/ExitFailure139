@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell, QuasiQuotes, MultiParamTypeClasses, TypeFamilies #-}
 module Foundation
     ( App (..)
     , Route (..)

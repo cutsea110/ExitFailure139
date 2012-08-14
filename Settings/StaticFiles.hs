@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell,QuasiQuotes #-}
 module Settings.StaticFiles where
 
 import Prelude (IO)
