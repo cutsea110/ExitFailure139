@@ -3,6 +3,9 @@ module Handler.Home where
 
 import Import
 
+import Data.Text (pack)
+import Prelude (readFile)
+
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in
 -- config/routes
@@ -53,6 +56,7 @@ getNewR = do
 
 postNewR :: Handler RepHtml
 postNewR = do
-  c <- runInputPost $ ireq textField "c"
+--  c <- runInputPost $ ireq textField "c"
+  c <- liftIO $ fmap pack $ readFile "longText.txt"
   pid <- runDB $ insert Post { postContent=c }
   redirect $ PostR pid
