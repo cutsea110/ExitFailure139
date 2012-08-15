@@ -56,7 +56,7 @@ getNewR = do
 
 postNewR :: Handler RepHtml
 postNewR = do
---  c <- runInputPost $ ireq textField "c"
-  c <- liftIO $ fmap pack $ readFile "longText.txt"
+  c <- runInputPost $ ireq textField "c"
+--  c <- liftIO $ fmap pack $ readFile "longText.txt"
   pid <- runDB $ insert Post { postContent=c }
   redirect $ PostR pid

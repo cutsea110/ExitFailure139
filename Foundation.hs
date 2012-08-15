@@ -76,6 +76,9 @@ type Form x = Html -> MForm App App (FormResult x, Widget)
 instance Yesod App where
     approot = ApprootMaster $ appRoot . settings
 
+--  When this messageLogger enabled, Then the segmentation fault DON'T occured.
+--    messageLogger a logger loc level msg = return ()
+
     -- Store session data on the client in encrypted cookies,
     -- default session idle timeout is 120 minutes
     makeSessionBackend _ = do
